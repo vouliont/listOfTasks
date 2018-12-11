@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Tasks</title>
+  
+  <link rel="stylesheet" href="styles/mainStyle.css">
+  
+  <script defer src="scripts/calendar.js"></script>
+  <script defer src="scripts/workWithTask.js"></script>
+  <script defer src="scripts/dropDownMenu.js"></script>
+  <script defer src="scripts/addTask.js"></script>
+  <script defer src="scripts/mainScript.js"></script>
+</head>
+
+<body>
+  
+  <div class="wrapper">
+    
+    <div id="calendar-wrapper">
+      
+      <div class="menus">
+        <ul id="menu-month" class="drop-down-menu">
+          <li class="menu-month__item menu-month__item--default">выберите месяц</li>
+          <li class="menu-month__item" data-option="0">Январь</li>
+          <li class="menu-month__item" data-option="1">Февраль</li>
+          <li class="menu-month__item" data-option="2">Март</li>
+          <li class="menu-month__item" data-option="3">Апрель</li>
+          <li class="menu-month__item" data-option="4">Май</li>
+          <li class="menu-month__item" data-option="5">Июнь</li>
+          <li class="menu-month__item" data-option="6">Июль</li>
+          <li class="menu-month__item" data-option="7">Август</li>
+          <li class="menu-month__item" data-option="8">Сентябрь</li>
+          <li class="menu-month__item" data-option="9">Октябрь</li>
+          <li class="menu-month__item" data-option="10">Ноябрь</li>
+          <li class="menu-month__item" data-option="11">Декабрь</li>
+        </ul>
+        
+        <ul id="menu-year" class="drop-down-menu"></ul>
+        
+        <script>
+          {
+            let nowYear = new Date().getFullYear();
+            let maxYear = nowYear + 5;
+            let innerListYear = '<li class="menu-year__item menu-year__item--default">выберите год</li>';
+            
+            for (let year = nowYear; year < maxYear; year++) {
+              innerListYear += `<li class="menu-year__item" data-option="${year}">${year}</li>`;
+            }
+            
+            document.querySelector('#menu-year').innerHTML = innerListYear;
+          }
+        </script>
+      </div>
+            
+    </div>
+    
+    <div id="tasks-block" class="clearfix">
+      
+      <div class="filter-tasks-wrapper">
+        <ul id="filter-tasks" class="drop-down-menu">
+          <li class="filter-tasks__item filter-tasks__item--default">все</li>
+          <li class="filter-tasks__item active" data-option="all">все</li>
+          <li class="filter-tasks__item" data-option="in-work">в работе</li>
+          <li class="filter-tasks__item" data-option="executed">выполненные</li>
+        </ul>
+      </div>
+    </div>
+    
+    <button id="btn-add-task">+</button>
+    
+    <div id="add-task-wrapper">
+      <div class="add-task-wrapper__btn-close">
+        <div class="btn-close__line"></div>
+        <div class="btn-close__line"></div>
+      </div>
+      
+      <div class="add-task">
+        <p class="lable-task-name required">Название задачи</p>
+        <input type="text" name="task-name" class="field-task-name add-task__field field-required">
+        
+        <p class="lable-task-description">Описание задачи</p>
+        <textarea name="task-description" class="field-task-description add-task__field" rows="3"></textarea>
+        
+        <button id="change-add-task-date">выберите дату ...</button>
+        
+        <button id="create-new-task">Добавить</button>
+      </div>
+    </div>
+    
+    <div class="confirm-changed-date">
+      <p class="confirm-changed-date__text"><span>выберите дату</span></p>
+      <button class="confirm-changed-date__btn"><img src="images/icon_check.png" alt="check"></button>
+    </div>
+  
+  </div>
+
+</body>
+
+</html>

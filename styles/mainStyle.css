@@ -1,0 +1,440 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+@font-face {
+  font-family: 'OpenSans Light';
+  src: url('../fonts/OpenSans-Light.ttf');
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'OpenSans Light';
+  font-size: 18px;
+  cursor: default;
+  position: relative;
+}
+
+ul {
+  list-style: none;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/*--------------------------------------------------------------   calendar   */
+
+#calendar-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 100px 30px 30px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.menus {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  padding: 0 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.drop-down-menu {
+  transition: height 0.3s;
+  cursor: pointer;
+  position: relative;
+  width: 200px;
+  height: 42px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 2px solid rgb(180, 180, 180);
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.drop-down-menu li {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 38px;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgb(180, 180, 180);
+  background-color: #fff;
+}
+
+.drop-down-menu li.active {
+  background-color: rgb(252, 209, 182) !important;
+}
+
+.drop-down-menu::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 7px solid rgb(26, 8, 0);
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-bottom: 0;
+  transition: transform 0.3s;
+  position: absolute;
+  top: 16px;
+  right: 8px;
+}
+
+.drop-down-menu.open::after {
+  transform: rotate(180deg);
+}
+
+#menu-month {
+  margin-right: 50px;
+}
+
+#menu-month.open {
+  height: 522px;
+}
+
+#menu-year.open {
+  height: 242px;
+}
+
+.menu-month__item--default,
+.menu-year__item--default {
+  background-color: rgb(223, 223, 223) !important;
+}
+
+#calendar {
+  border-collapse: collapse;
+  width: 100%;
+  z-index: 1;
+}
+
+#calendar td {
+  border: 1px solid rgb(180, 180, 180);
+  width: 14.28%;
+  height: 100px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-size: 30px;
+}
+
+#calendar td.other-month {
+  background-color: rgb(215, 215, 215);
+}
+
+#calendar td.active {
+  background-color: rgb(252, 209, 182);
+}
+
+.count-tasks {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: rgb(187, 34, 34);
+  color: #fff;
+  top: 5px;
+  right: 5px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 26px;
+}
+
+/*-----------------------------------------------------------   tasks-block   */
+
+#tasks-block {
+  padding: 30px;
+}
+
+#filter-tasks.open {
+  height: 162px;
+}
+
+.list-tasks__item {
+  padding: 20px;
+  background-color: rgb(204, 255, 227);
+  border: 2px solid rgb(182, 246, 212);
+  margin-bottom: 10px;
+  position: relative;
+  border-radius: 3px;
+}
+
+.list-tasks__item.executed {
+  background-color: rgb(157, 157, 157);
+  border-color: rgb(135, 135, 135);
+}
+
+.list-tasks__item.overdue {
+  background-color: rgb(195, 49, 49);
+  border-color: rgb(189, 30, 30);
+}
+
+.task-name {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.task-description {
+  text-indent: 20px;
+}
+
+.list-tasks-wrapper {
+  float: left;
+  width: calc(100% - 240px);
+}
+
+.filter-tasks-wrapper {
+  padding-top: 50px;
+  float: right;
+  display: none;
+}
+
+.task-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.task-buttons button {
+  box-sizing: border-box;
+  padding: 1px;
+  width: 34px;
+  height: 34px;
+  float: left;
+  margin-right: 10px;
+  border: 0;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.task-buttons button:last-child {
+  margin-right: 0;
+}
+.task-buttons button img {
+  height: 100%;
+  width: auto;
+}
+.btn-task-execute {
+  background-color: rgb(44, 128, 70);
+}
+.btn-task-edit {
+  background-color: rgb(192, 209, 89);
+}
+.btn-task-remove {
+  background-color: rgb(222, 37, 37);
+}
+
+
+
+
+/*--------------------------------------------------------------   add-task   */
+
+#btn-add-task {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: rgb(27, 213, 107);
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#btn-add-task:hover {
+  background-color: rgb(0, 163, 70);
+}
+
+#add-task-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: -100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  transition: top 0.5s;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#add-task-wrapper.active {
+  top: 0;
+}
+
+.add-task-wrapper__btn-close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.btn-close__line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 36px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.btn-close__line:first-child {
+  transform: translate3d(-50%, -50%, 0) rotate(45deg);
+}
+.btn-close__line:last-child {
+  transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+}
+
+.add-task {
+  width: 350px;
+}
+
+.add-task p {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.add-task p.required::after {
+  content: '*';
+  display: inline-block;
+  color: rgb(255, 0, 0);
+  margin-left: 5px;
+}
+
+.field-task-name,
+.field-task-description {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 1px solid rgb(213, 213, 213);
+  font-family: 'OpenSans Light';
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 25px;
+  border-radius: 2px;
+}
+
+.field-task-description {
+  overflow: auto;
+  height: 120px;
+  resize: none;
+}
+
+#change-add-task-date {
+  width: 165px;
+  height: 40px;
+  border: 0;
+  margin-right: 25px;
+  float: left;
+  font-size: 16px;
+  background-color: rgb(214, 226, 161);
+  cursor: pointer;
+  line-height: 40px;
+  border-radius: 2px;
+}
+#change-add-task-date:hover {
+  background-color: rgb(173, 185, 119);
+}
+
+#create-new-task {
+  width: 160px;
+  height: 40px;
+  border: 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  line-height: 40px;
+  background-color: rgb(27, 213, 107);
+  border-radius: 2px;
+  color: rgb(219, 232, 220);
+  font-weight: bold;
+}
+#create-new-task:hover {
+  background-color: rgb(0, 163, 70);
+}
+
+@keyframes animText {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.confirm-changed-date {
+  position: fixed;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 25px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  line-height: 25px;
+  overflow: hidden;
+  transition: top 0.3s;
+}
+.confirm-changed-date.visible {
+  top: 0;
+}
+
+.confirm-changed-date__text {
+  color: #fff;
+  text-align: center;
+  width: 250px;
+  float: left;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.confirm-changed-date__btn {
+  width: 50px;
+  height: 25px;
+  background-color: rgb(27, 213, 107);
+  border: 0;
+  float: right;
+  cursor: pointer;
+}
+.confirm-changed-date__btn:hover {
+  background-color: rgb(0, 163, 70);
+}
+.confirm-changed-date__btn img {
+  height: 20px;
+  width: auto;
+}
+
+.confirm-changed-date__text.animationText span {
+  animation-name: animText;
+  animation-delay: 0.3s;
+  animation-iteration-count: 3;
+  animation-duration: 0.5s;
+}
